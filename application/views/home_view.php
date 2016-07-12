@@ -9,7 +9,11 @@
 							  <center><h1>Mail It!</h1></center>
 								</br>
 							</div>
-							<?php echo form_open('email'); ?>
+							<?php 	$attributes = array('name' => 'sendForm'//, 
+											//'onsubmit' => 'isEmpty()'
+											);
+									echo form_open(site_url('email'), $attributes);?>
+							<?php //echo form_open('email'); ?>
 								<br>
 								<p>Subject:</p>
 								<label for="subject" class="sr-only">Subject</label>
@@ -24,7 +28,7 @@
 								<textarea name="message" class="form-control" placeholder="Type your mesage here" autofocus rows="4" cols="50"></textarea>
 								<br>
 								<div style="text-align:center;">
-									<button class="btn btn-primary" value="send" name="email" type="submit" style="text-align:center;  background-color: #00BFFF; font-size: 20px;" onclick="return checkInput()">Send My Mail</button>
+									<button class="btn btn-primary" value="send" name="email" type="submit" style="text-align:center;  background-color: #00BFFF; font-size: 20px;" onclick="return isEmpty()">Send My Mail</button>
 								</div>
 							</form>
 							
@@ -34,4 +38,21 @@
 			</div>
 			<div class="col-xs-1 col-sm-2 col-md-2 col-lg-3"></div>
 			 
+			 <script> //To check if the user has inputs on subject and message fields
+				function isEmpty() {
+					var subjectEmpty = document.forms["sendForm"]["subject"].value;  
+					var messageEmpty = document.forms["sendForm"]["message"].value;
+					var recipientsEmpty = document.forms["sendForm"]["recipients"].value;
+					
+					if ((subjectEmpty=="" && messageEmpty=="") || (subjectEmpty=="") || (messageEmpty=="")){
+						var ask = confirm("Send this message without a subject or text in the body?");
+							if(ask){
+								return true;
+							}
+							else{
+								return false;
+							}
+					}
+				}
+			</script>
 			

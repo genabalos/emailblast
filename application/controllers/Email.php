@@ -51,19 +51,13 @@ class Email extends CI_Controller{
 			foreach($myRecipients as $my_Recipients){
 				$my_Recipients = preg_replace('/\s+/', '', $my_Recipients);
 				if (valid_email($my_Recipients)){
-					if (($data['subject'] == '')||($data['message']=='')){
-						$data['prompt'] = "Email without a subject or text in the body was successfully sent.";
-						$this->load->view('templates/header');
-						$this->load->view('email_view', $data);
-						$this->load->view('templates/footer');
-						header("refresh:3; url=email");
-					}
 					
 					$this->email->set_newline("\r\n");
 					$this->email->from('geniferaabalos@gmail.com'); 
 					$this->email->to($my_Recipients);
-					$this->email->subject(' ' . " " . $data['subject']);
-					$this->email->message(' ' . " " . $data['message']); 
+					$this->email->subject($data['subject']);
+					$this->email->message($data['message']); 
+					//$this->email->attach('C:/Bitnami/wampstack-5.6.22-0/apache2/htdocs/emailblast/images/letters.jpg');
 					
 					if($this->email->send()){
 						$data['prompt'] = "Email Successfully Sent!";
