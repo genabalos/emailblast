@@ -5,7 +5,7 @@
 					<div class="box01">
 						<div class="login-window" style="margin-top:10px; margin-bottom:10px; margin-right:10px; margin-left:10px;">
 							
-							<?php echo $message; ?>
+							<?php echo $prompt; ?>
 							
 						</div>
 

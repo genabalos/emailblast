@@ -45,16 +45,20 @@ class Email extends CI_Controller{
 		
 		$myString = $data['recipients'];
 		$myRecipients = explode(',', $myString);
-		//$count = count($myRecipients);
-		//print_r($myArray);
-		//print_r($count);
 
 			$this->email->initialize($config);
 			
 			foreach($myRecipients as $my_Recipients){
 				$my_Recipients = preg_replace('/\s+/', '', $my_Recipients);
 				if (valid_email($my_Recipients)){
-					//echo $my_Recipients . "<br>";
+					if (($data['subject'] == '')||($data['message']=='')){
+						$data['prompt'] = "Email without a subject or text in the body was successfully sent.";
+						$this->load->view('templates/header');
+						$this->load->view('email_view', $data);
+						$this->load->view('templates/footer');
+						header("refresh:3; url=email");
+					}
+					
 					$this->email->set_newline("\r\n");
 					$this->email->from('geniferaabalos@gmail.com'); 
 					$this->email->to($my_Recipients);
@@ -62,21 +66,21 @@ class Email extends CI_Controller{
 					$this->email->message(' ' . " " . $data['message']); 
 					
 					if($this->email->send()){
-						$data['message'] = "Email Successfully Sent!";
+						$data['prompt'] = "Email Successfully Sent!";
 						$this->load->view('templates/header');
 						$this->load->view('email_view', $data);
 						$this->load->view('templates/footer');
 						header("refresh:3; url=email");
 					}else{
 						//show_error($this->email->print_debugger());
-						$data['message'] = "An error occured while sending the message.!";
+						$data['prompt'] = "An error occured while sending the message.!";
 						$this->load->view('templates/header');
 						$this->load->view('email_view', $data);
 						$this->load->view('templates/footer');
 						header("refresh:3; url=email");
 					}
 				}else{
-					$data['message'] = "Email is incorrect!";
+					$data['prompt'] = "Email is incorrect!";
 					$this->load->view('templates/header');
 					$this->load->view('email_view', $data);
 					$this->load->view('templates/footer');

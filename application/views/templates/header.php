@@ -1,4 +1,4 @@
-<html>
+<html style="height: 100%; box-sizing: border-box; font-family: Helvetica, Sans-Serif;">
  <head>
    <title>Send an Email</title>
    <meta charset="utf-8">
@@ -13,7 +13,7 @@
  
 <body style="background-image: url(<?php echo base_url('images/letters.jpg');?>">
 
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:20%;"> </div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:10%;"> </div>
 	
 	<div id="wrapper" style="min-height: 100%; position:relative">
 	
