@@ -28,8 +28,8 @@ class Email extends CI_Controller{
 		  'protocol' => 'smtp',
 		  'smtp_host' => 'ssl://smtp.googlemail.com',
 		  'smtp_port' => 465,
-		  'smtp_user' => 'geniferaabalos@gmail.com', // change it to yours
-		  'smtp_pass' => 'daking1939', // change it to yours
+		  'smtp_user' => '<your_email_here>', // change it to yours
+		  'smtp_pass' => '<your_password_here>', // change it to yours
 		  'mailtype' => 'text',
 		  'charset' => 'utf-8',
 		  'wordwrap' => TRUE
