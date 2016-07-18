@@ -17,6 +17,17 @@
 	
 	<div id="wrapper" style="min-height: 100%; position:relative">
 	
+	<div class="col-xs-1 col-sm-2 col-md-2 col-lg-3"></div>
+			<div class="container col-xs-10 col-sm-8 col-md-8 col-lg-6" style="background-color: #f7f8f3; margin-top:10px; margin-bottom:10px; margin-right:10px; margin-left:10px;">
+				<div class="row">
+					<div class="box01">
+						<div class="login-window" style="margin-top:10px; margin-bottom:10px; margin-right:10px; margin-left:10px;">
+							<div class="page-header" style="background-color: #B4EEB4;">
+								<br>
+							  <center><h1>Mail It!</h1></center>
+								</br>
+							</div>
+	
 		
 		
 		
